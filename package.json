@@ -13,6 +13,9 @@
   "pre-commit": [
     "prettier"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "author": {
     "name": "Emil Rune Møller",
     "email": "emilrmoeller@gmail.com",
