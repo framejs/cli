@@ -15,13 +15,13 @@ Compiles Markdown into static HTML and JSON, with live examples.
 
 ### Install the CLI
 
-```
+```sh
 $ npm install -g @framejs/cli
 ```
 
 ### Create a project
 
-```
+```sh
 project/
 ├── my-component.ts
 ├── my-component.scss
@@ -30,13 +30,13 @@ project/
 
 From the project root run:
 
-```
+```sh
 $ wui build
 ```
 
 This will generate:
 
-```
+```sh
 project/
 ├── dist
 │   ├── my-component.html // Component demo file
@@ -71,7 +71,7 @@ project/
 
 In a `<style>` tag, make an absolute path reference to sass file:
 
-```
+```typescript
 const template = `
     <style>
         @style('project/my-component.scss')
@@ -109,7 +109,7 @@ In markdown write:
 ### Make a web component library
 If you have a project like this, make a single `my-component-libary.ts` file that imports the other components and the compiler compiles it into UMD, bundle and es6:
 
-```
+```sh
 project/
 ├── my-component-libary.ts
 └── components
