@@ -1,5 +1,5 @@
-# Web Component UI
-Web Component UI is a dead simple reusable web component compiler and documentation tool.
+# Frame CLI
+Frame CLI is a dead simple reusable web component compiler and documentation tool.
 
 ### Simple
 Tiny tooling, non-opinionated, zero configuration, Typescript and SASS support with no overhead.
@@ -16,7 +16,7 @@ Compiles Markdown into static HTML and JSON, with live examples.
 ### Install the CLI
 
 ```
-$ npm install -g web-component-ui
+$ npm install -g @framejs/cli
 ```
 
 ### Create a project
@@ -39,7 +39,7 @@ This will generate:
 ```
 project/
 ├── dist
-│   ├── my-component.html // Demo file
+│   ├── my-component.html // Component demo file
 │   ├── my-component.json // Parsed markdown in json (including frontmatter keys)
 │   ├── my-component.js // es6
 │   ├── my-component.js.map // sourcemap
@@ -57,14 +57,14 @@ project/
 
 | Command      | Option            | Description                                                            |
 |--------------|-------------------|------------------------------------------------------------------------|
-| `wui build`  |                   | Compiles all files in project folder.                                  |
-| `wui build`  | -s, --styleguide  | Generates a index.html with a navigation to all component demos        |
+| `frame build`  |                   | Compiles all files in project folder.                                  |
+| `frame build`  | -s, --styleguide  | Generates a index.html with a navigation to all component demos        |
 
 | Command      | Option            | Description                                                            |
 |--------------|-------------------|------------------------------------------------------------------------|
-| `wui start`  |                   | Compiles and watches for file changes                                  |
-| `wui start`  | -o, --open        | Opens styleguide in the default browser                                |
-| `wui start`  | -e, --entry `path_to.md` | Opens styleguide for referenced styleguide file                 |
+| `frame start`  |                   | Compiles and watches for file changes                                  |
+| `frame start`  | -o, --open        | Opens styleguide in the default browser                                |
+| `frame start`  | -e, --entry `path_to.md` | Opens styleguide for referenced styleguide file                 |
 
 
 ### Inline CSS from SASS in component
@@ -82,7 +82,7 @@ const template = `
 _SASS compiles into autoprefixed CSS 2 browser versions behind based on caniuse_
 
 ### Component styleguide
-wui compiles all `.md` into HTML and JSON, not limited to components and follows the directory structure.
+Frame CLI compiles all `.md` into HTML and JSON, not limited to components and follows the directory structure.
 
 #### Inline component demo
 In markdown write:
@@ -91,7 +91,7 @@ In markdown write:
 ```
 &lt;custom-element-demo&gt;
   &lt;template&gt;
-    <span>&lt;script src="my-component.bundle.js"&gt;</span>
+    <span>&lt;script src="my-component.bundle.js"&gt;&lt;/script&gt;</span>
     <span>&lt;next-code-block&gt;&lt;/next-code-block&gt;</span>
   &lt;/template&gt;
 &lt;/custom-element-demo&gt;
