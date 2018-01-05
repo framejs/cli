@@ -43,7 +43,7 @@ project/
 │   ├── my-component.json // Parsed markdown in json (including frontmatter keys)
 │   ├── my-component.js // es6
 │   ├── my-component.js.map // sourcemap
-│   ├── my-component.bundle.js // Rollup IIFE es2015 bundle
+│   ├── my-component.bundle.js // Rollup IIFE es6 bundle
 │   ├── my-component.bundle.js.map // Bundle sourcemap
 │   ├── my-component.module.js // UMD module
 │   ├── my-component.module.js.map // Module sourcemap
@@ -107,7 +107,7 @@ In markdown write:
 > All code in `<template>...</template>` will execute on demo page load.
 
 ### Make a web component library
-If you have a project like this, make a single `my-component-libary.ts` file that imports the other components and the compiler compiles it into UMD, bundle and es2015:
+If you have a project like this, make a single `my-component-libary.ts` file that imports the other components and the compiler compiles it into UMD, bundle and es6:
 
 ```
 project/
