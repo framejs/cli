@@ -1,13 +1,13 @@
 {
   "name": "@framejs/cli",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "CLI tool for compiling web components and documentation",
   "main": "runner.js",
   "bin": {
-    "wui": "./bin/frame"
+    "frame": "./bin/frame"
   },
   "scripts": {
-    "prettier": "node node_modules/prettier/bin/prettier.js --write bin/wui **/*.js && git add . && git status",
+    "prettier": "node node_modules/prettier/bin/prettier.js --write bin/frame **/*.js && git add . && git status",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "pre-commit": [
