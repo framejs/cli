@@ -1,6 +1,6 @@
 {
   "name": "@framejs/cli",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "CLI tool for compiling web components and documentation",
   "main": "runner.js",
   "bin": {
@@ -35,6 +35,7 @@
     "commander": "^2.12.1",
     "del": "^3.0.0",
     "fs-extra": "^4.0.2",
+    "gh-pages": "^1.1.0",
     "glob": "^7.1.2",
     "gulp": "3.9.1",
     "gulp-marked-json": "^1.0.0",

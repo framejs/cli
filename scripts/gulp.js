@@ -41,6 +41,7 @@ exports.run = function(opts) {
         'compile:markdown',
         'compile:demo',
     ]);
+
     gulp.task('build', ['clean', 'compile', 'copy:package-configuration']);
 
     const taskPromise = id => {
@@ -62,6 +63,5 @@ exports.run = function(opts) {
     this.watch = async function watch(opts) {
         await taskPromise('watch:build');
     };
-
     return this;
 };

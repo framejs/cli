@@ -6,6 +6,7 @@ const runner = require('../runner');
 const cwd = process.cwd();
 const gulp = runner.gulp.run({ directory: cwd });
 const documentation = runner.documentation;
+const ghpages = require('gh-pages');
 const pkg = require('../package.json');
 const path = require('path');
 
@@ -25,6 +26,34 @@ program
     .option('-o, --open', 'opens the URL in default browser')
     .option('-i, --index <path>', 'Relative path to .md file to use as index html')
     .action(start);
+
+program
+    .command('publish')
+    .description('Publish your library (defaults to branch gh-pages)')
+    .option('-g, --git', 'Publish dist to github pages (defaults to branch gh-pages)')
+    .option('-d, --dir <path>', 'The base directory for all source files (defaults to dist).')
+    .option(
+        '-s, --source <minimatch>',
+        'The minimatch pattern or array of patterns used to select which files should be published.',
+    )
+    .option(
+        '-b, --branch <branch>',
+        "The name of the branch you'll be pushing to. The default uses GitHub's gh-pages branch, but this can be configured to push to any branch on any remote.",
+    )
+    .option(
+        '-r, --repository <repository>',
+        'url for the origin remote of the current dir (assumes a git repository)',
+    )
+    .option(
+        '-o, --origin <origin>',
+        "The name of the remote you'll be pushing to. The default is your 'origin' remote, but this can be configured to push to any remote.",
+    )
+    .option('-m, --message <message>', "The commit message for all commits (defaults to: 'update')")
+    .option(
+        '-t, --tag <tag>',
+        'Create a tag after committing changes on the target branch. By default, no tag is created. To create a tag, provide the tag name as the option value.',
+    )
+    .action(publish);
 
 program.parse(process.argv);
 
@@ -58,6 +87,7 @@ function build(options) {
         })
         .catch(err => log(`Error: ${err}`, 4, 'Build'));
 }
+
 function start(options) {
     log('Compiling...', 1, 'Start');
     gulp
@@ -89,4 +119,28 @@ function start(options) {
             }
         })
         .catch(err => log(`Error: ${err}`, 4, 'Start'));
+}
+
+function publish(options) {
+    log('Publishing...', 1, 'Publish');
+    let opts = {};
+    if (options.src) opts['src'] = options.src;
+    if (options.branch) opts['branch'] = options.branch;
+    if (options.dest) opts['dest'] = options.dest;
+    if (options.repository) opts['repo'] = options.repository;
+    if (options.origin) opts['remote'] = options.origin;
+    if (options.message) opts['message'] = options.message;
+    if (options.tag) opts['tag'] = options.tag;
+
+    ghpages.publish(
+        options.dir ? path.join(cwd, options.dir) : path.join(cwd, 'dist'),
+        opts,
+        err => {
+            if (err) {
+                log(`Error: ${err}`, 4, 'Publish');
+            } else {
+                log(`Published to: ${options.branch ? options.branch : 'gh-pages'}`, 2, 'Publish');
+            }
+        },
+    );
 }

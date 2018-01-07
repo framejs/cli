@@ -31,7 +31,7 @@ project/
 From the project root run:
 
 ```sh
-$ wui build
+$ frame build
 ```
 
 This will generate:
@@ -52,20 +52,6 @@ project/
 ├── my-component.scss
 └── readme.md
 ```
-
-### CLI options
-
-| Command      | Option            | Description                                                            |
-|--------------|-------------------|------------------------------------------------------------------------|
-| `frame build`  |                   | Compiles all files in project folder.                                  |
-| `frame build`  | -i, --index `path_to.md`  | Relative path to .md file to use as index html, defaults to a directory listing.        |
-
-| Command      | Option            | Description                                                            |
-|--------------|-------------------|------------------------------------------------------------------------|
-| `frame start`  |                   | Compiles and watches for file changes                                  |
-| `frame start`  | -o, --open        | Opens styleguide in the default browser                                |
-| `frame build`  | -i, --index `path_to.md`  | Relative path to .md file to use as index html, defaults to a directory listing.        |
-
 
 ### Inline CSS from SASS in component
 
@@ -130,6 +116,53 @@ In `my-component-libary.ts`:
 ```
 
 _When referencing to component files use ending `.js` so it works with native modules loading in supported browsers_
+
+### Develop with watch and live reload
+Work on components in sandbox / styleguide mode using the cli:
+
+```sh
+$ frame start --open
+```
+
+This creates a directory listing with links to independent component/docs in your project. To serve only a single component/doc use:
+
+```sh
+$ frame start --open --index path/to/component_or_doc.md
+```
+
+### Publish dist to github pages
+To share your component and documentation from project root run (assuming the project is a git repo):
+
+```sh
+$ frame build && frame publish
+```
+
+_see more options in the CLI options table_ 
+
+
+### CLI options
+
+| Command      | Option            | Description                                                            |
+|--------------|-------------------|------------------------------------------------------------------------|
+| `frame build`  |                   | Compiles all files in project folder.                                  |
+| `frame build`  | -i, --index `path_to.md`  | Relative path to .md file to use as index html, defaults to a directory listing.        |
+
+| Command      | Option            | Description                                                            |
+|--------------|-------------------|------------------------------------------------------------------------|
+| `frame start`  |                   | Compiles and watches for file changes                                  |
+| `frame start`  | -o, --open        | Opens styleguide in the default browser                                |
+| `frame build`  | -i, --index `path_to.md`  | Relative path to .md file to use as index html, defaults to a directory listing.        |
+
+| Command      | Option            | Description                                                            |
+|--------------|-------------------|------------------------------------------------------------------------|
+| `frame publish` |                | Publish dist to github pages (defaults to branch:gh-pages)             |
+| `frame publish` | -d, --dir `path/to/dist` | The base directory for all source files (defaults to dist).  |
+| `frame publish` | -s, --source `**/*` | The minimatch pattern or array of patterns used to select which files should be published.') |
+| `frame publish` | -b, --branch `branch` | The name of the branch you\'ll be pushing to. The default uses GitHub\'s gh-pages branch, but this can be configured to push to any branch on any remote. |
+| `frame publish` | -r, --repository `https://example.com/other/repo.git` | Url for the origin remote of the current dir (assumes a git repository) |
+| `frame publish` | -o, --origin `origin`| The name of the remote you\'ll be pushing to. The default is your \'origin\' remote, but this can be configured to push to any remote. |
+| `frame publish` | -m, --message `'commit message'` | The commit message for all commits (defaults to: \'update\') |
+| `frame publish` | -t, --tag `tag` | Create a tag after committing changes on the target branch. By default, no tag is created. To create a tag, provide the tag name as the option value. |
 
 ## Can you help?
 
