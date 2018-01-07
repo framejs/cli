@@ -42,7 +42,7 @@ exports.clean = function clean() {
 };
 
 exports.triggerCompileFromScss = function trigger() {
-    return gulp.src(`${cwd}/src/**/*.scss`).pipe(
+    return gulp.src(`${cwd}/**/*.scss`).pipe(
         through.obj((input, enc, cb) => {
             stylesMap.updateTimestampFromStylesMap(input);
             cb(null, input);
