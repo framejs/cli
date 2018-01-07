@@ -58,13 +58,13 @@ project/
 | Command      | Option            | Description                                                            |
 |--------------|-------------------|------------------------------------------------------------------------|
 | `frame build`  |                   | Compiles all files in project folder.                                  |
-| `frame build`  | -s, --styleguide  | Generates a index.html with a navigation to all component demos        |
+| `frame build`  | -i, --index `path_to.md`  | Relative path to .md file to use as index html, defaults to a directory listing.        |
 
 | Command      | Option            | Description                                                            |
 |--------------|-------------------|------------------------------------------------------------------------|
 | `frame start`  |                   | Compiles and watches for file changes                                  |
 | `frame start`  | -o, --open        | Opens styleguide in the default browser                                |
-| `frame start`  | -e, --entry `path_to.md` | Opens styleguide for referenced styleguide file                 |
+| `frame build`  | -i, --index `path_to.md`  | Relative path to .md file to use as index html, defaults to a directory listing.        |
 
 
 ### Inline CSS from SASS in component
