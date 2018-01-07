@@ -46,10 +46,25 @@ exports.createIndex = async function createIndex() {
 exports.createOverview = async function() {
     const promise = new Promise((resolve, reject) => {
         const templatePath = path.resolve(rootPath, 'templates', 'overview.hbs');
-        fs.copyFile(templatePath, `${path.join(cwd, 'dist', 'demo.html')}`, err => {
+        fs.copyFile(templatePath, `${path.join(cwd, 'dist', 'index.html')}`, err => {
             if (err) throw err;
             resolve();
         });
+    });
+
+    await promise;
+};
+
+exports.createIndexHTML = async function(source) {
+    const promise = new Promise((resolve, reject) => {
+        fs
+            .copy(source, path.join(path.parse(source).dir, 'index.html'))
+            .then(() => {
+                resolve();
+            })
+            .catch(err => {
+                log(`ERROR: ${err}`, 4, 'Documentation');
+            });
     });
 
     await promise;

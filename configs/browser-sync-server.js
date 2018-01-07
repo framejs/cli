@@ -1,7 +1,7 @@
 const browserSync = require('browser-sync').create();
 
 exports.init = function(cwd, index) {
-    let startIndex = `demo.html`;
+    let startIndex = `index.html`;
 
     if (index) {
         startIndex = index.replace(/.md/, '.html');
