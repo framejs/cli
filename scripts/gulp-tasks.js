@@ -141,11 +141,6 @@ exports.copyReadmeFiles = function copyReadmeFiles() {
     return gulp
         .src(markdownGlob)
         .pipe(
-            through.obj((input, enc, cb) => {
-                cb(null, input);
-            }),
-        )
-        .pipe(
             newer({
                 dest: 'dist',
                 ext: '.md',
@@ -180,6 +175,13 @@ exports.markdownToJSON = function markdownToJSON() {
                 smartypants: true,
             }),
         )
+        .pipe(
+            through.obj((input, enc, cb) => {
+                // Ensures the piped file is .json (issue when cli is used via package.json)
+                input.path = input.path.replace('.md', '.json');
+                cb(null, input);
+            }),
+        )
         .pipe(demoUtils.replaceExample())
         .pipe(
             newer({
@@ -202,6 +204,13 @@ exports.compileDemo = function compileDemo() {
         .pipe(
             markdown({
                 smartypants: true,
+            }),
+        )
+        .pipe(
+            through.obj((input, enc, cb) => {
+                // Ensures the piped file is .json (issue when cli is used via package.json)
+                input.path = input.path.replace('.md', '.json');
+                cb(null, input);
             }),
         )
         .pipe(demoUtils.replaceExample())
