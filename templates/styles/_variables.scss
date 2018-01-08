@@ -2,24 +2,30 @@
 $medium-breakpoint: 800px;
 
 // Layout
-$max-text-width: 800px;
+$max-width: 800px;
 $content-padding: 0 16px;
 
 // Typography
-$type-display-20-size: 33px;
-$type-title-30-size: 22px;
-$type-title-20-size: 17px;
-$type-title-10-size: 13px;
-$type-body-20-size: 15px;
-$type-body-10-size: 13px;
-$type-caption-20-size: 13px;
-$type-caption-10-size: 11px;
+$type-h1-size: 28px; //h1
+$type-h2-size: 22px; // h2
+$type-h3-size: 20px; // h3
+$type-h4-size: 16px; // h4
+$type-h5-size: 14px; // h5
+$type-h6-size: 12px; // h6
+$type-body-size: 15px;
+$type-body-small-size: 13px;
+$type-caption-size: 13px;
+$type-caption-small-size: 11px;
 
-$type-display-20-weight: 200;
-$type-title-30-weight: 300;
-$type-title-20-weight: 500;
-$type-title-10-weight: 500;
-$type-body-20-weight: 400;
-$type-body-10-weight: 400;
-$type-caption-20-weight: 400;
-$type-caption-10-weight: 400;
+$type-heading-weight: 600;
+$type-body-weight: 400;
+
+$color-grey-10: #f9f9fa;
+$color-grey-20: #ededf0;
+$color-grey-30: #d7d7db;
+$color-grey-40: #b1b1b3;
+$color-grey-50: #737373;
+$color-grey-60: #4a4a4f;
+$color-grey-70: #38383d;
+$color-grey-80: #2a2a2e;
+$color-grey-90: #0c0c0d;
