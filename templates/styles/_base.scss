@@ -1,3 +1,5 @@
+@import 'variables';
+
 * {
     box-sizing: border-box;
 }
@@ -6,5 +8,241 @@ body, html {
     min-height: 100%;
     margin: 0;
     padding: 0;
+    font-size: 15px;
     font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+    color: $color-grey-90;
+}
+
+
+a, a:visited {
+    color: #0052CC;
+}
+
+a:hover {
+    color: #0065FF;
+    text-decoration: underline;
+}
+
+h1 {
+    font-size: $type-h1-size;
+    font-weight: $type-heading-weight;
+
+    & + p {
+        font-size: 16px;
+        margin-top: 12px;
+        padding-bottom: 12px;
+    }
+}
+
+h2 {
+    font-size: $type-h2-size;
+    font-weight: $type-heading-weight;
+}
+
+h3 {
+    font-size: $type-h3-size;
+    font-weight: $type-heading-weight;
+}
+
+h4 {
+    font-size: $type-h4-size;
+    font-weight: $type-heading-weight;
+}
+
+h5 {
+    font-size: $type-h5-size;
+    font-weight: $type-heading-weight;
+}
+
+h6 {
+    font-size: $type-h6-size;
+    font-weight: $type-heading-weight;
+}
+
+p {
+    font-size: $type-body-size;
+    font-weight: $type-body-weight;
+    line-height: 1.5;
+}
+
+p small {
+    font-size: $type-body-small-size;
+    font-weight: $type-body-weight;
+}
+
+figcaption {
+    font-size: $type-caption-size;
+    font-weight: $type-body-weight;
+}
+
+blockquote {
+    color: $color-grey-50;
+
+    p {
+        border-left: 2px $color-grey-50;
+        padding: 0 0 0 16px;
+        margin: 0;
+    }
+}
+
+img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+}
+
+ul, ol {
+    padding: 0 16px 1rem 48px;
+    margin: 0 auto;
+
+    li {
+        line-height: 1.6;
+
+        ul, ol {
+            padding-left: 18px;
+        }
+    }
+}
+
+hr {
+    border: none;
+    border-bottom: 2px solid #EBECF0;
+    margin: 32px auto;
+
+    & + * {
+        margin-top: 0;
+    }
+}
+
+
+// Code
+
+code {
+    font-family: "SFMono-Medium", "SF Mono", "Segoe UI Mono", "Roboto Mono", "Ubuntu Mono", Menlo, Courier, monospace;
+}
+
+pre {
+    width: 100%;
+    margin: 0 auto;
+    line-height: 0;
+}
+
+pre code, .hljs {
+    font-weight: 500;
+    display: block;
+    overflow-x: auto;
+    word-wrap: normal;
+    white-space: pre;
+    box-sizing: border-box;
+    font-size: 14px;
+    line-height: 20px;
+    word-break: break-all;
+    word-wrap: break-word;
+    display: block;
+    white-space: pre-wrap;
+    margin: 0;
+    padding: 16px 32px;
+    border-radius: 4px;
+    background: #f4f5f7;
+}
+
+:not(pre) > * > code,
+:not(pre) > code {
+    background: #F4F5F7;
+    border-radius: 3px;
+    color: #5E6C84;
+    display: inline-block;
+    padding: 0 0.2em;
+}
+
+// Table
+
+table {
+    display: table;
+    width: 100%;
+    overflow: auto;
+    border-collapse: collapse;
+    line-height: 1.5;
+
+    thead {
+        text-align: left;
+        th {
+            text-transform: uppercase;
+            padding: 4px 16px 4px 0;
+            vertical-align: top;
+            font-size: .8em;
+            font-weight: 400;
+
+            &:last-of-type {
+                padding-right: 0;
+            }
+
+            &:empty {
+                display: none;
+            }
+        }
+    }
+
+    tbody {
+        td {
+            padding: 4px 16px 4px 0;
+            vertical-align: top;
+
+            &:last-of-type {
+                padding-right: 0;
+            }
+        }
+    }
+}
+
+custom-element-demo {
+    border: 4px solid #f4f5f7;
+    border-radius: 3px;
+}
+
+custom-element-demo + pre {
+    margin-top: -4px;
+}
+
+p,
+ul,
+ol,
+dl,
+blockquote,
+pre,
+form,
+table,
+custom-element-demo {
+    margin: 12px 0 0 0;
+
+    & + custom-element-demo {
+        margin-top: 32px;
+    }
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 32px 0 0 0;
+}
+
+p:first-child,
+ul:first-child,
+ol:first-child,
+dl:first-child,
+h1:first-child,
+h2:first-child,
+h3:first-child,
+h4:first-child,
+h5:first-child,
+h6:first-child,
+blockquote:first-child,
+pre:first-child,
+form:first-child,
+table:first-child {
+    margin-top: 0;
+    padding-top: 0;
 }

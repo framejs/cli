@@ -31,6 +31,11 @@ exports.run = function(opts) {
         );
         gulp.watch([`${cwd}/**/*.scss`, `!${cwd}/node_modules`, `!${cwd}/dist`], ['scss:trigger']);
         gulp.watch(markdownGlob, ['copy:readme', 'compile:markdown', 'compile:demo']);
+        gulp.watch(`${rootPath}/templates/**/*`, [
+            'copy:readme',
+            'compile:markdown',
+            'compile:demo',
+        ]);
     });
 
     gulp.task('compile', [
