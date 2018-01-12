@@ -33,6 +33,7 @@ const tsProjectRaw = ts.createProject({
     lib: ['es5', 'es6', 'dom', 'es7', 'esnext'],
     experimentalDecorators: true,
     moduleResolution: 'node',
+    declaration: true,
 });
 
 exports.clean = function clean() {
