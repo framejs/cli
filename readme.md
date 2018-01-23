@@ -55,12 +55,12 @@ project/
 
 ### Inline CSS from SASS in component
 
-In a `<style>` tag, make an absolute path reference to sass file:
+In a `<style>` tag, make an absolute or relative path reference to sass file:
 
 ```typescript
 const template = `
     <style>
-        @style('project/my-component.scss')
+        @style('./my-component.scss')
     </style>
 `
 ```
