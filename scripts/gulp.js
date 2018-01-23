@@ -26,7 +26,7 @@ exports.run = function(opts) {
 
     gulp.task('watch:build', () => {
         gulp.watch(
-            [`${cwd}/**/!(*.spec)*.ts`, `!${cwd}/node_modules`, `!${cwd}/dist`],
+            [`${cwd}/**/!(*.spec|*.d)*.ts`, `!${cwd}/node_modules/`, `!${cwd}/dist/`],
             ['compile'],
         );
         gulp.watch([`${cwd}/**/*.scss`, `!${cwd}/node_modules`, `!${cwd}/dist`], ['scss:trigger']);

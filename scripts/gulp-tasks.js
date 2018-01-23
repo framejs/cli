@@ -18,7 +18,7 @@ const applyToStylesMap = require('./utils').applyToStylesMap;
 const updateTimestampFromStylesMap = require('./utils').updateTimestampFromStylesMap;
 const newer = require('gulp-newer');
 const demoUtils = require('./gulp-demo-utils');
-const tsSource = [`${cwd}/**/!(*.spec)*.ts`, `!${cwd}/dist**/*`, `!${cwd}/node_modules/**/*`];
+const tsSource = [`${cwd}/**/!(*.spec|*.d)*.ts`, `!${cwd}/dist**/*`, `!${cwd}/node_modules/**/*`];
 const markdownGlob = [
     `${cwd}/**/*.md`,
     `${cwd}/readme.md`,
@@ -34,6 +34,7 @@ const tsProjectRaw = ts.createProject({
     experimentalDecorators: true,
     moduleResolution: 'node',
     declaration: true,
+    exclude: ['dist'],
 });
 
 exports.clean = function clean() {

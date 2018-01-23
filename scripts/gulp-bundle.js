@@ -38,6 +38,7 @@ exports.gulpBundle = function(options) {
                         lib: ['es5', 'es6', 'dom', 'es7', 'esnext'],
                         experimentalDecorators: true,
                         moduleResolution: 'node',
+                        exclude: ['dist'],
                     }),
                     rollupResolve({
                         jsnext: true,
@@ -45,6 +46,22 @@ exports.gulpBundle = function(options) {
                     }),
                     commonjs(),
                 ],
+                onwarn(warning) {
+                    let { code } = warning;
+
+                    if (
+                        // Suppress known error message caused by TypeScript compiled code with Rollup
+                        // https://github.com/rollup/rollup/wiki/Troubleshooting#this-is-undefined
+                        code === 'THIS_IS_UNDEFINED' ||
+                        // Suppress errors regarding un-used exports. These may be left behind
+                        // after DEBUG stripping and Rollup removed them anyway.
+                        code === 'UNUSED_EXTERNAL_IMPORT'
+                    ) {
+                        return;
+                    }
+
+                    console.log(`Rollup warning: ${warning.message}`);
+                },
             })
             .then(res => {
                 res
@@ -63,7 +80,7 @@ exports.gulpBundle = function(options) {
                     });
             })
             .catch(err => {
-                log(`Error: ${err}`, 4, 'Bundle');
+                log(`Error: ${JSON.stringify(err)}`, 4, 'Bundle');
                 callback(null, file);
             });
     });
