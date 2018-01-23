@@ -25,7 +25,14 @@ module.exports = function(options) {
         file.contents = new Buffer(
             file.contents.toString().replace(/@style\('([^]*?)'\)/g, (match, filepath) => {
                 try {
-                    const fullFilepath = path.resolve(`${opts.cwd}/${filepath}`);
+                    let fullFilepath;
+
+                    if (filepath.match(/[.]\//)) {
+                        fullFilepath = path.resolve(path.parse(file.path).dir, filepath);
+                    } else {
+                        fullFilepath = path.resolve(opts.cwd, filepath);
+                    }
+
                     const style = fs.readFileSync(fullFilepath, { encoding: 'utf8' });
 
                     const compiledStyle = sass.renderSync({
